@@ -20,8 +20,8 @@ except FileExistsError:
 
 for root, dirs, files in os.walk(root_path):
     for file in files:
-        print(file)
         if file.endswith('.json'):
+            print(file)
             with open(root_path + file) as json_file:
                 data = json.load(json_file)
                 person_index = 0
@@ -40,13 +40,14 @@ for root, dirs, files in os.walk(root_path):
                             null_nodes.append(index)
                     G.add_edges_from(EDGES)
                     for node in null_nodes:
-                        G.remove_node(node)
+                        for edge in G.edges:
+                            if node in edge:
+                                G.remove_edge(edge[0], edge[1])
                     out_string['people'].append({'id': person_index, 'value': nx.adjacency_data(G)})
                     person_index += 1
             with open(out_path + file, 'w') as out_file:
                 json.dump(out_string, out_file, indent=2)
-                G.clear()
+            G.clear()
     break
-
 # nx.draw(G, with_labels='true', font_color='white', font_weight='bold')
-# plt.show()
+  #           plt.show()
