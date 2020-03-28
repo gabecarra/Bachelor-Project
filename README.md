@@ -53,6 +53,6 @@ Project Link: [https://github.com/gabecarra/Bachelor-Project](https://github.com
 [contributors-shield]: https://img.shields.io/badge/Contributors-1-brightgreen?style=flat-square
 [contributors-url]: https://github.com/gabecarra/Bachelor-Project/graphs/contributors
 [license-shield]: https://img.shields.io/badge/license-MIT-blue?style=flat-square
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
+[license-url]: https://github.com/gabecarra/Bachelor-Project/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 <!-- [linkedin-url]:  -->
