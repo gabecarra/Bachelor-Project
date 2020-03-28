@@ -9,7 +9,7 @@
   <a href="https://github.com/gabecarra/Bachelor-Project">
     <img src="images/logo.png" alt="Logo" width="100" height="100">
   </a>
-    <h1 align="center">Graph Representations<br> to Model Physical Systems</h1>
+    <h3 align="center">Graph Representations to Model Physical Systems</h3>
 </p>
 
 <!-- TABLE OF CONTENTS -->
