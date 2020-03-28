@@ -1,4 +1,9 @@
-def get_edges(node_type):
+def get_edges(node_type: str):
+    """
+    Given a node type (pose, face, hand), returns the given edge set
+    :param str node_type: the type of nodes needed
+    :return list or None: list of edges, otherwise None
+    """
     if node_type == 'pose':
         edges_list = [
             {"ref_node": 0, 'linked_nodes': [1, 15, 16]},
