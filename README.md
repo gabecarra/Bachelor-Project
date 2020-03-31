@@ -55,7 +55,7 @@ Gabriel Henrique Carraretto - carrag@usi.ch
 
 Project Link: [https://github.com/gabecarra/Bachelor-Project](https://github.com/your_username/repo_name)
 
-[contributors-shield]: https://img.shields.io/badge/Contributors-1-brightgreen?style=flat-square
+[contributors-shield]: https://img.shields.io/badge/contributors-1-brightgreen?style=flat-square
 [contributors-url]: https://github.com/gabecarra/Bachelor-Project/graphs/contributors
 [license-shield]: https://img.shields.io/badge/license-MIT-blue?style=flat-square
 [license-url]: https://github.com/gabecarra/Bachelor-Project/blob/master/LICENSE
