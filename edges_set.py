@@ -32,7 +32,7 @@ def get_edges(node_type: str):
             {"ref_node": 23, 'linked_nodes': [22]},
             {"ref_node": 24, 'linked_nodes': [11]}
         ]
-    elif node_type == 'hand':
+    elif node_type in ['handl', 'handr']:
         edges_list = [
             {"ref_node": 0, 'linked_nodes': [1, 5, 9, 13, 17]},
             {"ref_node": 1, 'linked_nodes': [0, 2]},
