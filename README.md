@@ -42,6 +42,7 @@ The data set will not be collected by me directly, an already done dataset will 
 * [Anaconda](https://www.anaconda.com)
 * [Networkx](https://networkx.github.io)
 * [Spektral](https://spektral.graphneural.network)
+* [MPII Human Pose Dataset](http://human-pose.mpi-inf.mpg.de)
 
 <!-- LICENSE -->
 ## License
