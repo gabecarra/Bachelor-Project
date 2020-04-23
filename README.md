@@ -49,7 +49,8 @@ The data set will not be collected by me directly, an already done dataset will 
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
-Icon made by [Becris](https://www.flaticon.com/authors/becris) from www.flaticon.com
+
+Logo made by [Becris](https://www.flaticon.com/authors/becris) from www.flaticon.com
 
 <!-- CONTACT -->
 ## Contact
