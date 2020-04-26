@@ -6,7 +6,7 @@ Retrieves a set of filenames associated to a given category
 
 import scipy.io
 
-PATH = '../mpii_human_pose/dataset.mat'
+PATH = 'mpii_human_pose/dataset.mat'
 
 
 def parse_category(cat_name: str, path=PATH):
@@ -23,6 +23,5 @@ def parse_category(cat_name: str, path=PATH):
     for i in range(0, len(images)):
         if images[i]['cat_name'].size != 0 and images[i]['cat_name'] == cat_name:
             file_list.append(images[i]['name'][0].replace('.jpg', '_keypoints.json'))
-    print('Images found: ', len(file_list))
-    print(file_list)
+    print('Category \'' + cat_name + '\': ', len(file_list), ' images found...')
     return file_list
