@@ -50,6 +50,8 @@ The data set will not be collected by me directly, an already done dataset will 
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
+Logo made by [Becris](https://www.flaticon.com/authors/becris) from www.flaticon.com
+
 <!-- CONTACT -->
 ## Contact
 
