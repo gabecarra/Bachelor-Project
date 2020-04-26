@@ -1,3 +1,9 @@
+"""
+Carraretto Gabriel H.
+image_info
+Fetches the resolution values from a set of images, and save the info as txt files
+"""
+
 import os
 import glob
 from PIL import Image

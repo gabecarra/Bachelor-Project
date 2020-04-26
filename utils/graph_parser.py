@@ -1,9 +1,16 @@
+"""
+Carraretto Gabriel H.
+graph_parser
+Parses a given set of JSON OpenPose structured data in a cleaner and more easy-to-use JSON structured data
+"""
+
+import glob
 import json
 import os
-import glob
-import image_info
-import edges_set
+
 import progress.bar as progress_bar
+
+from utils import image_info, edges_ref
 
 
 def _parse_edges(graph: dict, del_nodes: list, index: int, node_type: str):
@@ -18,7 +25,7 @@ def _parse_edges(graph: dict, del_nodes: list, index: int, node_type: str):
     """
     if node_type not in ['pose', 'handl', 'handr', 'face']:
         raise ValueError("Given type of keypoints is unsupported!...")
-    edges_list = edges_set.get_edges(node_type)
+    edges_list = edges_ref.get_edges(node_type)
     for del_node in del_nodes:
         curr_node = _find_node(edges_list, del_node)
         if curr_node is not None:
@@ -122,10 +129,10 @@ def _parse_graph(open_pose_data: dict, filename: str, path: str) -> dict:
         graph['people'].append(
             dict(id=index,
                  nodes=dict(
-                            pose=[],
-                            hands=dict(left=[],
-                                       right=[]),
-                            face=[]),
+                     pose=[],
+                     hands=dict(left=[],
+                                right=[]),
+                     face=[]),
                  edges=dict(pose=[],
                             hands=dict(left=[],
                                        right=[]),

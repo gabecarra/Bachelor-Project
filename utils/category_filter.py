@@ -1,16 +1,23 @@
+"""
+Carraretto Gabriel H.
+category_filter
+Retrieves a set of filenames associated to a given category
+"""
+
 import scipy.io
 
-PATH = 'mpii_human_pose/dataset.mat'
+PATH = '../mpii_human_pose/dataset.mat'
 
 
-def parse_category(cat_name: str):
+def parse_category(cat_name: str, path=PATH):
     """
-    Given a category, parses the elements inside a .mat file, in order to retrieve all the image file names that are
-    within the given category
+    Given a category and a path, parses the elements inside a .mat file, in order to retrieve all the image file
+    names that are within the given category
     :param str cat_name: category of a given activity
+    :param str path: path to the .mat file
     :return list: list of file names to be retrieved
     """
-    file = scipy.io.loadmat(PATH)
+    file = scipy.io.loadmat(path)
     images = file['images'][0]
     file_list = []
     for i in range(0, len(images)):
