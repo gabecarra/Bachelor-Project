@@ -13,8 +13,6 @@ __pycache__/
 .idea
 .Python
 build/
-data/*
-data/JSON/*
 develop-eggs/
 dist/
 downloads/
@@ -133,6 +131,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-/data/
-/data/JSON/
-/data/JSON/
+/out/
+/out/*
+
