@@ -6,7 +6,7 @@ Retrieves a set of filenames associated to a given category
 
 import scipy.io
 
-PATH = 'mpii_human_pose/dataset.mat'
+PATH = 'dataset/dataset.mat'
 
 
 def parse_category(cat_name: str, path=PATH):
