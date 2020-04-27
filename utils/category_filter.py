@@ -23,5 +23,5 @@ def parse_category(cat_name: str, path=PATH):
     for i in range(0, len(images)):
         if images[i]['cat_name'].size != 0 and images[i]['cat_name'] == cat_name:
             file_list.append(images[i]['name'][0].replace('.jpg', '_keypoints.json'))
-    print('Category \'' + cat_name + '\': ', len(file_list), ' images found...')
+    # print('Category \'' + cat_name + '\': ', len(file_list), ' images found...')
     return file_list

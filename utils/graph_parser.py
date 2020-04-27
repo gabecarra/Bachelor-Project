@@ -68,13 +68,12 @@ def parse_nodes(graph: dict, keypoints: list, index: int, k_type: str) -> list:
         y = keypoints[i + 1]
         confidence = keypoints[i + 2]
         node_id = int(i / 3)
-        if x != 0 or y != 0:
-            if k_type in ['handl', 'handr']:
-                graph['people'][index]['nodes']['hands'][orientation].append(dict(id=node_id, x=x, y=y,
+        if k_type in ['handl', 'handr']:
+            graph['people'][index]['nodes']['hands'][orientation].append(dict(id=node_id, x=x, y=y,
                                                                                   confidence=confidence))
-            else:
-                graph['people'][index]['nodes'][k_type].append(dict(id=node_id, x=x, y=y, confidence=confidence))
         else:
+            graph['people'][index]['nodes'][k_type].append(dict(id=node_id, x=x, y=y, confidence=confidence))
+        if x == 0 and y == 0:
             index_list.append(node_id)
     return index_list
 
@@ -178,3 +177,6 @@ def generate_dataset(path):
                 json.dump(graph, out_file, indent=2)
         bar.next()
     bar.finish()
+
+    
+generate_dataset('/Users/gabecarra/Desktop/output_json/')
