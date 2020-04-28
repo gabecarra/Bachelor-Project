@@ -26,7 +26,6 @@ def __parse_edges(graph: dict, del_nodes: list, index: int, node_type: str):
     :param list del_nodes: Nodes to be deleted
     :param int index: Index of the current person
     :param str node_type: Type of nodes needed ('pose', 'hand' or 'face'). Default: 'pose'
-    :return list: List containing only the edges not specified in del_nodes
     """
     if node_type not in ['pose', 'handl', 'handr', 'face']:
         raise ValueError('Given type of keypoints is unsupported!...')
@@ -174,7 +173,6 @@ def generate_dataset(path):
         os.mkdir(path + '/out/')
     except FileExistsError:
         print('\'./out/\' folder already exists!')
-        pass
     else:
         print('done')
 
