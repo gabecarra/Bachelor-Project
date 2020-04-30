@@ -1,4 +1,6 @@
 """
+@author Carraretto Gabriel H.
+@license MIT
 Parses the main dataset in order to retrieve the graph representations
 of people running and cycling, then uses a CNN to learn the relations
 between the people and the given category, in order to classify the data

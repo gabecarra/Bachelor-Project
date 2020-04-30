@@ -1,6 +1,6 @@
 """
-Carraretto Gabriel H.
-image_info
+@author Carraretto Gabriel H.
+@license MIT
 Fetches the resolution values from a set of images, and save the info as
 txt files
 """

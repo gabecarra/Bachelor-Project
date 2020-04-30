@@ -1,6 +1,6 @@
 """
-Carraretto Gabriel H.
-graph_parser
+@author Carraretto Gabriel H.
+@license MIT
 Parses a given set of JSON OpenPose structured data in a cleaner and
 more easy-to-use JSON structured data. Can be used as it its, or by
 passing the path to the JSON files in command line. If a path is not

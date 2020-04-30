@@ -1,6 +1,6 @@
 """
-Carraretto Gabriel H.
-edges_ref
+@author Carraretto Gabriel H.
+@license MIT
 Contains all the OpenPose edge references for face, hands and pose
 """
 

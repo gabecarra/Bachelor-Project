@@ -1,5 +1,6 @@
 """
-networkx_converter
+@author Carraretto Gabriel H.
+@license MIT
 Converts a JSON structured set of graphs, into an array of networkx
 graphs
 """

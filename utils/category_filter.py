@@ -1,6 +1,6 @@
 """
-Carraretto Gabriel H.
-category_filter
+@author Carraretto Gabriel H.
+@license MIT
 Retrieves a set of filenames associated to a given category
 """
 
