@@ -7,4 +7,5 @@ Currently, the accuracy of the model fluctuates between 75% and 85%. Below
 there is a graphical representation of the accuracy and loss function between
 the training and testing datasets used for the model creation:
 
-![Graphs](../../images/graph.png)
+
+   <img src="images/graph.png" alt="Logo" width="512">
