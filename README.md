@@ -35,6 +35,8 @@ The graph representations are then processed by applying some neural methods in 
 The data set and the neural methods used will depend on the type of problem we want to solve. 
 
 The data set will not be collected by me directly, an already done dataset will be used instead
+ 
+The documentation can be found here 👉🏼 [link](https://github.com/gabecarra/Bachelor-Project/blob/master/docs/utils.md)
 
 ### Built With
 
@@ -44,6 +46,8 @@ The data set will not be collected by me directly, an already done dataset will 
 * [Spektral](https://spektral.graphneural.network)
 * [MPII Human Pose Dataset](http://human-pose.mpi-inf.mpg.de)
 * [Matlab](http://www.mathworks.com)
+
+
 
 <!-- LICENSE -->
 ## License
@@ -57,7 +61,7 @@ Logo made by [Becris](https://www.flaticon.com/authors/becris) from www.flaticon
 
 Gabriel Henrique Carraretto - carrag@usi.ch
 
-Project Link: [https://github.com/gabecarra/Bachelor-Project](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/gabecarra/Bachelor-Project](https://github.com/gabecarra/Bachelor-Project)
 
 [contributors-shield]: https://img.shields.io/badge/contributors-1-brightgreen?style=flat-square
 [contributors-url]: https://github.com/gabecarra/Bachelor-Project/graphs/contributors
