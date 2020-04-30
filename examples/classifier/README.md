@@ -8,5 +8,5 @@ there is a graphical representation of the accuracy and loss function between
 the training and testing datasets used for the model creation:
 
 <p align="center">
-    <img src="../../images/graph.png" alt="Logo" width="800">
+    <img src="../../images/graph.png" alt="Logo" width="700">
 </p>
