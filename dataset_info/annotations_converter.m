@@ -14,4 +14,4 @@ for i = 1 : SIZE
 end
 
 
-save dataset images
+save dataset_info images
