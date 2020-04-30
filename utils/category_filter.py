@@ -11,8 +11,9 @@ PATH = 'dataset_info/dataset_info.mat'
 
 def parse_category(cat_name: str, path=PATH):
     """
-    Given a category and a path, parses the elements inside a .mat file, in order to retrieve all the image file
-    names that are within the given category
+    Given a category and a path, parses the elements inside a .mat file,
+    in order to retrieve all the image file names that are within the
+    given category
     :param str cat_name: category of a given activity
     :param str path: path to the .mat file
     :return list: list of file names to be retrieved
@@ -21,7 +22,9 @@ def parse_category(cat_name: str, path=PATH):
     images = file['images'][0]
     file_list = []
     for i in range(0, len(images)):
-        if images[i]['cat_name'].size != 0 and images[i]['cat_name'] == cat_name:
-            file_list.append(images[i]['name'][0].replace('.jpg', '_keypoints.json'))
-    # print('Category \'' + cat_name + '\': ', len(file_list), ' images found...')
+        if images[i]['cat_name'].size != 0 and \
+                images[i]['cat_name'] == cat_name:
+            file_list.append(
+                images[i]['name'][0].replace('.jpg', '_keypoints.json')
+            )
     return file_list

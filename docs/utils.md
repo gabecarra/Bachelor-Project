@@ -92,7 +92,8 @@ Retrieves a set of filenames associated to a given category
 ## parse_category
 
 ```python
-parse_category(cat_name: str, path='../mpii_human_pose/dataset.mat')
+parse_category(cat_name: str, path='../dataset_info/dataset_info.mat'
+)
 ```
 
 Given a category and a path, parses the elements inside a .mat file, in order to retrieve all the image file names that are within the given category
