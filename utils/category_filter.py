@@ -9,7 +9,7 @@ import scipy.io
 PATH = 'dataset_info/dataset_info.mat'
 
 
-def parse_category(cat_name: str, path=PATH):
+def parse_category(cat_name: str, path=PATH) -> list:
     """
     Given a category and a path, parses the elements inside a .mat file,
     in order to retrieve all the image file names that are within the
