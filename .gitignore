@@ -131,4 +131,12 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+/openpose/*
+openpose/*
+/openpose/
+openpose/
+/data/*
+data/*
 /data/
+data/
+/images/esempio.jpg
