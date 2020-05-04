@@ -289,9 +289,10 @@ def points_to_json(keypoints, path: str, img_res: str, node_type: list,
                           filename,
                           res=str(img_res[1]) + 'x' + str(img_res[0]))
     if index is not None:
-        json_file = path + filename + '_' + str(index) + '.json'
+        json_file = path + filename + '_frame_' + \
+                    str(index) + '_keypoints.json'
     else:
-        json_file = path + filename + '.json'
+        json_file = path + filename + '_keypoints.json'
     with open(json_file, 'w') as out_file:
         ujson.dump(graph, out_file)
 

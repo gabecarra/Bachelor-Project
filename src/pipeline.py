@@ -141,8 +141,9 @@ def process_video(video_path: str):
     :return:
     """
     video = cv2.VideoCapture(video_path)
-    success, video_frame = video.read()
     n_frames = int(video.get(cv2.CAP_PROP_FRAME_COUNT))
+    if n_frames == 0:
+        raise FileNotFoundError(video_path + ' not found!')
     bar = progress_bar.IncrementalBar(
         'Applying OpenPose recognition: ',
         max=n_frames,
@@ -151,20 +152,22 @@ def process_video(video_path: str):
     start = time.time()
     bar.start()
     frame_index = 0
-    while success:
-        datum = op.Datum()
-        datum.cvInputData = video_frame
-        opWrapper.emplaceAndPop([datum])
-        bar.next()
-        if args[0].display == '1':
-            display_img(datum)
-        if args[0].write_json is not None:
-            write_json(datum,
-                       params,
-                       video_path,
-                       video_frame.shape,
-                       frame_index)
-            frame_index += 1
+    datum = op.Datum()
+    while video.isOpened():
+        ret, video_frame = video.read()
+        if ret:
+            datum.cvInputData = video_frame
+            opWrapper.emplaceAndPop([datum])
+            bar.next()
+            if args[0].display == '1':
+                display_img(datum)
+            if args[0].write_json is not None:
+                write_json(datum,
+                           params,
+                           video_path,
+                           video_frame.shape,
+                           frame_index)
+                frame_index += 1
     bar.finish()
     end = time.time()
     print("Video processing successfully finished. Total time: {:.2f}s"
