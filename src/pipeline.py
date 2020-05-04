@@ -137,8 +137,7 @@ def process_video(video_path: str):
     Given a path to a video, applies OpenPose image processing to each
     frame of the video, and perform other operations based on the flags
     passed as arguments in command line
-    :param str video_path: a path to
-    :return:
+    :param str video_path: a path to a video file
     """
     video = cv2.VideoCapture(video_path)
     n_frames = int(video.get(cv2.CAP_PROP_FRAME_COUNT))
@@ -174,6 +173,46 @@ def process_video(video_path: str):
           .format(end - start))
 
 
+def process_stream():
+    """
+    Applies OpenPose image processing to an input stream such as a
+    camera, and perform other operations based on the flags passed as
+    arguments in command line
+    """
+    stream = cv2.VideoCapture(0)
+    datum = op.Datum()
+    frame_index = 0
+    fps_count = 0
+    start = time.time()
+    while True:
+        ret, frame = stream.read()
+        if ret:
+            datum.cvInputData = frame
+            opWrapper.emplaceAndPop([datum])
+            if args[0].write_json is not None:
+                write_json(datum,
+                           params,
+                           'capture.jpeg',
+                           frame.shape,
+                           frame_index)
+                frame_index += 1
+            fps_count += 1
+            fps_value = fps_count/(time.time() - start)
+            print('Current FPS: ' + str(fps_value), end='\r')
+            image = cv2.putText(datum.cvOutputData,
+                                str(round(fps_value, 2)) + ' FPS',
+                                (50, 50),
+                                cv2.FONT_HERSHEY_SIMPLEX,
+                                1,
+                                (57, 255, 20),
+                                2, cv2.LINE_AA)
+            cv2.imshow("OpenPose stream", image)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+    stream.release()
+    cv2.destroyAllWindows()
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
@@ -201,5 +240,8 @@ if __name__ == '__main__':
         paths = op.get_images_on_directory(args[0].image_dir)
         process_images(paths)
     else:
-        raise IndexError('Usage: ' + os.path.basename(__file__) +
-                         ' --image_dir [path] or --video [path]')
+        try:
+            process_stream()
+        except IndexError:
+            print('Usage: ' + os.path.basename(__file__) +
+                  ' --image_dir [path] or --video [path]')
