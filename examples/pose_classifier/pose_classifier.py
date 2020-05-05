@@ -30,7 +30,7 @@ def __get_graph_list(files: list):
     graph_list = []
     for file in files:
         graph_list.extend(
-            get_nx_graphs("../data/MPII Human Pose Dataset" + file,
+            get_nx_graphs("../../data/MPII Human Pose Dataset/" + file,
                           ['pose'],
                           normalize=True)
         )
