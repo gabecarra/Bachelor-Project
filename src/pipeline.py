@@ -15,7 +15,9 @@ try:
         sys.path.append(
             dir_path + '../openpose/build/python/openpose/Release'
         )
-        path = os.environ['PATH'] + ';' + dir_path + '/../../x64/Release;' + dir_path + '/../../bin;'
+        path = os.environ['PATH'] + ';' + \
+            dir_path + '/../../x64/Release;' + \
+            dir_path + '/../../bin;'
         os.environ['PATH'] = path
         import pyopenpose as op
     else:
@@ -27,20 +29,21 @@ except ImportError as e:
     raise e
 
 
-def parse_config_params(arg_size: int):
+def parse_config_params(arguments):
     """
     Given the size of the arguments passed, parses the custom parameters
     passed as command line options, and returns a dictionary of
     parameters
-    :param int arg_size: size of arguments
+    :param arguments: size of arguments
     :return dict: dictionary of parameters
     """
     parameters = dict()
+    arg_size = len(arguments[1])
     for i in range(0, arg_size):
-        curr_keyword = args[1][i]
+        curr_keyword = arguments[1][i]
         # if the current keyword is not the last one
         if i != arg_size - 1:
-            next_keyword = args[1][i + 1]
+            next_keyword = arguments[1][i + 1]
         else:
             next_keyword = '1'
         if '--' in curr_keyword:
@@ -106,15 +109,14 @@ def process_images(image_paths: str, node_types: dict):
     processing to each image in the path, and perform other operations
     based on the flags passed as arguments in command line
     :param image_paths: path to a folder containing images
-    :param dict node_types: dictionary of flags that represents the type
-    of nodes to be processed
+    :param node_types: dictionary of flags that represents the type of
+    nodes to be processed
     """
     bar = progress_bar.IncrementalBar(
         'Applying OpenPose recognition: ',
         max=len(image_paths),
         suffix='%(index)d/%(max)d'
     )
-    bar.start()
     start = time.time()
     for image_path in image_paths:
         datum = op.Datum()
@@ -163,7 +165,7 @@ def process_video(video_path: str, node_type: dict):
     frame of the video, and perform other operations based on the flags
     passed as arguments in command line
     :param str video_path: a path to a video file
-    :param dict node_types: dictionary of flags that represents the type
+    :param dict node_type: dictionary of flags that represents the type
     of nodes to be processed
     """
     video = cv2.VideoCapture(video_path)
@@ -205,7 +207,7 @@ def process_stream(node_type: dict):
     Applies OpenPose image processing to an input stream such as a
     camera, and perform other operations based on the flags passed as
     arguments in command line
-    :param dict node_types: dictionary of flags that represents the type
+    :param dict node_type: dictionary of flags that represents the type
     of nodes to be processed
     """
     stream = cv2.VideoCapture(0)
@@ -246,19 +248,24 @@ def get_node_types(arguments: dict):
     """
     Given the arguments parsed from command line, returns a dictionary
     of flags representing the node types to be processed
-    :param dict arguments: dictionary of arguments parsed from command line
+    :param dict arguments: dictionary of arguments parsed from command
+    line
     :return: dictionary of node types
     """
     out = dict(pose=False, hand=False, face=False)
+    # check if only face or only hand is required
     if 'body' in arguments and arguments['body'] == '0':
+        # only hand
         if 'hand' in arguments and 'face' not in arguments:
             out['hand'] = True
             return out
+        # only face
         elif 'face' in arguments and 'hand' not in arguments:
             out['face'] = True
             return out
         else:
-            raise RuntimeError('--hand and --face cannot be used simultaneously with --body 0')
+            raise RuntimeError('--hand and --face cannot be used'
+                               'simultaneously with --body 0')
     else:
         out['pose'] = True
         if 'hand' in arguments:
@@ -277,27 +284,28 @@ if __name__ == '__main__':
     parser.add_argument('--display', default='0')
     parser.add_argument('--write_json')
     args = parser.parse_known_args()
-
     # Custom params
-    params = parse_config_params(len(args[1]))
+    params = parse_config_params(args)
     params["model_folder"] = "../openpose/models/"
 
     # Starting OpenPose
     opWrapper = op.WrapperPython()
     opWrapper.configure(params)
     opWrapper.start()
-    node_type = get_node_types(params)
+    node_t = get_node_types(params)
 
     # video processing
     if args[0].video is not None and args[0].image_dir is None:
-        process_video(args[0].video, node_type)
+        process_video(args[0].video, node_t)
+
     # image processing
     elif args[0].image_dir is not None and args[0].video is None:
         paths = op.get_images_on_directory(args[0].image_dir)
-        process_images(paths, node_type)
+        process_images(paths, node_t)
     else:
         try:
-            process_stream(node_type)
+            # camera processing
+            process_stream(node_t)
         except IndexError:
             print('Usage: ' + os.path.basename(__file__) +
                   ' --image_dir [path] or --video [path]')
