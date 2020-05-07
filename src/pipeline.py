@@ -118,6 +118,7 @@ def process_images(image_paths: str, node_types: dict):
         suffix='%(index)d/%(max)d'
     )
     start = time.time()
+    bar.start()
     for image_path in image_paths:
         datum = op.Datum()
         image_to_process = cv2.imread(image_path)
@@ -133,10 +134,6 @@ def process_images(image_paths: str, node_types: dict):
                 ]
             ]
             datum.handRectangles = hand_rectangles
-
-        if node_types['face'] and not node_types['pose']:
-            # TODO: implement only face
-            pass
 
         opWrapper.emplaceAndPop([datum])
         bar.next()
