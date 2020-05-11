@@ -75,10 +75,10 @@ def __standardize_data(adj_lst, pred_lst, y_lst):
     :return 3x numpy arrays: A_norm, X_norm and y_norm normalized
     """
 
-    # fil = np.full(y_lst.shape[0], fill_value=True)
-    # for i in range(y_lst.shape[0]):
-    #     fil[i] = (pred_lst[i, :, 2] > .7).mean() > .5
-    # adj_lst_std, pred_lst_std, y_std = adj_lst[fil], pred_lst[fil], y_lst[fil]
+    fil = np.full(y_lst.shape[0], fill_value=True)
+    for i in range(y_lst.shape[0]):
+        fil[i] = (pred_lst[i, :, 2] > .7).mean() > .5
+    adj_lst_std, pred_lst_std, y_std = adj_lst[fil], pred_lst[fil], y_lst[fil]
 
     pred_lst_std = __add_onehot(pred_lst[:, :, :2])
     pred_lst_std -= pred_lst_std.mean(axis=1, keepdims=True)
@@ -195,7 +195,7 @@ if __name__ == "__main__":
     history = model.fit(
         [x_train, A_train], y_train,
         batch_size=batch_size,
-        validation_split=0.1,
+        validation_split=0.2,
         epochs=epochs,
         callbacks=[early_stopping], verbose=0
     )
