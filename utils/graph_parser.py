@@ -12,6 +12,7 @@ import glob
 import ujson
 import os
 import sys
+from statistics import mean
 
 import progress.bar as progress_bar
 
@@ -256,16 +257,24 @@ def __generate_openpose_dict(keypoints, node_type: dict) -> dict:
         )
         n = 0
         if node_type['pose']:
-            person['pose_keypoints_2d'] = keypoints[0][i].flatten().tolist()
+            pose = keypoints[0][i].flatten().tolist()
+            person['pose_keypoints_2d'] = pose
             n += 1
         if node_type['face']:
-            person['face_keypoints_2d'] = keypoints[0 + n][i].flatten().tolist()
+            face = keypoints[0 + n][i].flatten().tolist()
+            person['face_keypoints_2d'] = face
             n += 1
         if node_type['hand']:
-            person['hand_left_keypoints_2d'] = \
-                keypoints[0 + n][i].flatten().tolist()
-            person['hand_right_keypoints_2d'] = \
-                keypoints[1 + n][i].flatten().tolist()
+            left = keypoints[0][i].flatten().tolist()
+            right = keypoints[1][i].flatten().tolist()
+            only_hand = not node_type['pose'] and not node_type['face']
+            left_is_best = mean(left) >= mean(right)
+            person['hand_left_keypoints_2d'] = left
+            person['hand_right_keypoints_2d'] = right
+            if only_hand and left_is_best:
+                person['hand_right_keypoints_2d'] = []
+            elif only_hand and not left_is_best:
+                person['hand_left_keypoints_2d'] = []
         keypts_dict['people'].append(person)
     return keypts_dict
 
@@ -282,8 +291,6 @@ def points_to_json(keypoints, path: str, img_res: list, node_type: dict,
     :param dict node_type: dictionary of flags that represents the type
     of nodes for each keypoint
     :param str filename: name of the given file processed by OpenPose
-    :param int index: Represents a counter for the frames of a video, if
-    the file processed is a video, is an integer, otherwise None
     """
     try:
         os.mkdir(path)
