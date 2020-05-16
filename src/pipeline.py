@@ -403,17 +403,19 @@ def __process_stream(openpose, args, node_type: dict):
     :param dict node_type: dictionary of flags that represents the type
     of nodes to be processed
     """
-    stream = cv2.VideoCapture(0)
-    datum = op.Datum()
-    frame_idx = 0
-    fps_count = 0
+    cap = cv2.VideoCapture(0)
     start = time.time()
+    fps = 1
+    frame_idx = 0
     while True:
-        ret, frame = stream.read()
-        print(frame, ret)
+        datum = op.Datum()
+        ret, frame = cap.read()
         if ret:
             datum.cvInputData = frame
             openpose.emplaceAndPop([datum])
+            cv2.imshow('frame', __display_fps(fps, start, datum.cvOutputData))
+            fps += 1
+
             if args['write_json']:
                 filename = 'capture' + str(frame_idx)
                 __write_json(datum,
@@ -422,13 +424,9 @@ def __process_stream(openpose, args, node_type: dict):
                              frame.shape,
                              args['write_json'])
                 frame_idx += 1
-            fps_count += 1
-            cv2.imshow("OpenPose stream", __display_fps(fps_count,
-                                                        start,
-                                                        datum.cvOutputData))
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
-    stream.release()
+    cap.release()
     cv2.destroyAllWindows()
 
 
@@ -498,6 +496,12 @@ if __name__ == '__main__':
                        '--write_json ../out/only_hands/']
     camera_args = ['--hand',
                    '--face',
+                   '--write_images ../out_img/stream/',
                    '--write_json ../out/stream/']
+    black_args = ['--image_dir ../src/samples/test/',
+                  '--hand',
+                  '--face',
+                  '--write_images ../out_img/default/',
+                  '--write_json ../out/default/']
     parse_data(camera_args)
 

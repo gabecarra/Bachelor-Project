@@ -247,6 +247,14 @@ def __generate_openpose_dict(keypoints, node_type: dict) -> dict:
     :return dict: dictionary of keypoints
     """
     keypts_dict = dict(people=[])
+    if keypoints[0].shape == ():
+        keypts_dict['people'] = [dict(
+            pose_keypoints_2d=[],
+            face_keypoints_2d=[],
+            hand_left_keypoints_2d=[],
+            hand_right_keypoints_2d=[]
+        )]
+        return keypts_dict
     n_person = keypoints[0].shape[0]
     for i in range(n_person):
         person = dict(
