@@ -139,7 +139,6 @@ openpose/
 data/*
 /data/
 data/
-/images/esempio.jpg
 out/
 out/*
 /out/
