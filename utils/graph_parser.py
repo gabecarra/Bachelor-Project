@@ -149,8 +149,7 @@ def __parse_graph(open_pose_data: dict, filename: str, path=None, res=None) -> d
     """
     index = 0
     if res is None:
-        image_info_path = path + '/out_res/' + filename + '.txt'
-        res = image_info.get_resolution(image_info_path)
+        res = image_info.get_resolution(path, filename)
     graph = dict(filename=filename,
                  resolution=res,
                  people=[])
@@ -307,7 +306,7 @@ def points_to_json(keypoints, path: str, img_res: list, node_type: dict,
     openpose_dict = __generate_openpose_dict(keypoints, node_type)
     graph = __parse_graph(openpose_dict,
                           filename,
-                          res=str(img_res[1]) + 'x' + str(img_res[0]))
+                          res=[str(img_res[1]), str(img_res[0])])
     json_file = path + filename + '_keypoints.json'
     with open(json_file, 'w') as out_file:
         ujson.dump(graph, out_file)

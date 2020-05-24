@@ -1,13 +1,15 @@
-import sys
-import cv2
-import os
-from sys import platform
 import importlib
+import os
+import sys
 import time
-import progress.bar as progress_bar
-import utils.graph_parser as gp
-from statistics import mean
 from math import ceil
+from statistics import mean
+from sys import platform
+
+import cv2
+import progress.bar as progress_bar
+
+import utils.graph_parser as gp
 
 # Import OpenPose python wrapper
 try:
@@ -475,33 +477,12 @@ def parse_data(args):
 
 
 if __name__ == '__main__':
-
-    pose_args = ['--image_dir ../src/samples/',
-                 '--hand',
-                 '--face',
-                 '--write_images ../out_img/default/',
-                 '--write_json ../out/default/']
-
-    video_args = ['--video ../src/samples/video.mp4',
-                  '--write_json ../out/video/',
-                  '--hand',
-                  '--face',
-                  '--write_images ../out_img/video/']
-    # only hands
-    only_hands_args = ['--image_dir ../src/samples/hand/paper/',
-                       '--hand',
-                       '--body 0',
-                       '--hand_detector 2',
-                       '--write_images ../out_img/only_hands/',
-                       '--write_json ../out/only_hands/']
-    camera_args = ['--hand',
-                   '--face',
-                   '--write_images ../out_img/stream/',
-                   '--write_json ../out/stream/']
-    black_args = ['--image_dir ../src/samples/test/',
-                  '--hand',
-                  '--face',
-                  '--write_images ../out_img/default/',
-                  '--write_json ../out/default/']
-    parse_data(camera_args)
-
+    sys_args = sys.argv[1:]
+    parsed_args = []
+    for i in range(len(sys_args)):
+        if '--' in sys_args[i]:
+            if '--' not in sys_args[i + 1] and i < len(sys_args):
+                parsed_args.append(sys_args[i] + ' ' + sys_args[i + 1])
+            else:
+                parsed_args.append(sys_args[i])
+    parse_data(parsed_args)
