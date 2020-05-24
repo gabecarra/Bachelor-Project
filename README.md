@@ -9,13 +9,10 @@
   <a href="https://github.com/gabecarra/Bachelor-Project">
     <img src="images/logo.png" alt="Logo" width="100" height="100">
   </a>
-    <h3 align="center">GraphParser</h3>
-    <p align="center">Graph Representations to Model Physical Systems<p>
+    <h1z align="center">Graph Representations <br> to Model Physical Systems</h1z>
 </p>
 
-___
-
-### **Bachelor project 2020 - Machine Learning - USI**
+### **Bachelor project 2020 - Machine Learning**
 **Advisor:** Prof. Cesare Alippi
 
 **Co-advisors:** Andrea Cini & Daniele Zambon
