@@ -13,7 +13,9 @@
     <p align="center">Graph Representations to Model Physical Systems<p>
 </p>
 
-### **Bachelor project 2020 - Machine Learning**
+___
+
+### **Bachelor project 2020 - Machine Learning - USI**
 **Advisor:** Prof. Cesare Alippi
 
 **Co-advisors:** Andrea Cini & Daniele Zambon
