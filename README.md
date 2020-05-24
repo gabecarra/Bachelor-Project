@@ -9,7 +9,8 @@
   <a href="https://github.com/gabecarra/Bachelor-Project">
     <img src="images/logo.png" alt="Logo" width="100" height="100">
   </a>
-    <h1 align="center">Graph Representations <br> to Model Physical Systems</h1>
+    <h3 align="center">GraphParser</h3>
+    <p align="center">Graph Representations to Model Physical Systems<p>
 </p>
 
 ### **Bachelor project 2020 - Machine Learning**
