@@ -78,17 +78,17 @@ It also provides some utilities for converting the data from a JSON structured g
 ### Installation
 
 **1.** Clone GraphPipe from github:
-```sh
+```shell script
 git clone https://github.com/gabecarra/GraphPipe.git
 cd GraphPipe
 ```
 **2.** Install package dependencies
-```sh
+```shell script
 python setup.py install
 ```
 
 **3.** Make sure that pyOpenPose works:
-```sh
+```shell script
 python
 import openpose
 ```
@@ -97,9 +97,31 @@ import openpose
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+GraphPipe can be used both via command line interface or as a python package:
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+- CLI
+```shell script
+python graph_pipe [ARGS]
+```
+- python package
+```python
+import graph_pipe
+graph_list = graph_pipe.run([ARGS])
+```
+Examples:
+- Body pose estimation from a video
+
+```shell script
+python graph_pipe  --video examples/media/video.avi --write_json output/ --display 0
+```
+
+- Body + hands + face from images
+```shell script
+python graph_pipe --image_dir examples/media/ --face --hand
+```
+_For more examples, please refer to the [OpenPose doc](https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/quick_start.md#quick-start)_
+
+_For the complete set of FLAGS see [flags.hpp](https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/include/openpose/flags.hpp)_
 
 
 
