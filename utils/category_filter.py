@@ -1,7 +1,7 @@
 """
 @author Carraretto Gabriel H.
 @license MIT
-Retrieves a set of filenames associated to a given category
+Retrieves a set of filenames associated to a given category of MPII Human Pose dataset
 """
 
 import scipy.io
@@ -13,7 +13,7 @@ def parse_category(cat_name: str, path=PATH) -> list:
     """
     Given a category and a path, parses the elements inside a .mat file,
     in order to retrieve all the image file names that are within the
-    given category
+    given category for the MPII Human Pose dataset
     :param str cat_name: category of a given activity
     :param str path: path to the .mat file
     :return list: list of file names to be retrieved

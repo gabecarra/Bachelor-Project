@@ -432,7 +432,13 @@ def __process_stream(openpose, args, node_type: dict):
     cv2.destroyAllWindows()
 
 
-def parse_data(args):
+def parse_data(args: list):
+    """
+    Parses the data passed as argument, and, depending on the arguments,
+    applies OpenPose recognition to hands, face and body, and returns a
+    set of JSON structured graphs
+    :param list args: list of arguments represented as a string
+    """
     default_args, custom_args = __parse_args(args)
     # path to openpose models
     custom_args['model_folder'] = '../openpose/models/'
