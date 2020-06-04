@@ -6,16 +6,16 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/gabecarra/Bachelor-Project">
+  <a href="https://github.com/gabecarra/GraphPipe">
     <img src="images/logo.png" alt="Logo" width="250" height="250">
   </a>
     <p align="center">
       Graph Representations to Model Physical Systems
       <br>
-      <a href="https://github.com/gabecarra/Bachelor-Project/blob/master/docs/documentation.md"><strong>Explore the docs »</strong></a>
+      <a href="https://github.com/gabecarra/GraphPipe/blob/master/docs/documentation.md"><strong>Explore the docs »</strong></a>
       <br />
       <br />
-      <a href="https://github.com/gabecarra/Bachelor-Project/tree/master/demo">View Demo </a>
+      <a href="https://github.com/gabecarra/GraphPipe/tree/master/demo">View Demo </a>
       ·
       <a href="https://github.com/github_username/repo/issues">Project Report</a>
      <p>
@@ -52,7 +52,7 @@ The following project consists in a python package that applies 2D multi-person 
 
 The software works with images, videos and real time input streams. It uses [OpenPose](https://github.com/CMU-Perceptual-Computing-Lab/openpose) to parse the given frames into keypoints and generates JSON files, containing a clear and rich representation of attributed graphs for each detected person.
 
-It also provides some utilities for converting the data from a JSON structured graph, to a more standard representation such as the NetworkX format. For more info 👉🏼[click here](https://github.com/gabecarra/Bachelor-Project/blob/master/docs/documentation.md).
+It also provides some utilities for converting the data from a JSON structured graph, to a more standard representation such as the NetworkX format. For more info 👉🏼[click here](https://github.com/gabecarra/GraphPipe/blob/master/docs/documentation.md).
 
 ### Built With
 
@@ -69,26 +69,31 @@ It also provides some utilities for converting the data from a JSON structured g
 ## Getting Started
 
 ### Prerequisites
-1 . **Python** should be installed on your system 👉🏼 [Python download link](https://www.python.org/downloads/).
+**a)** **Python** should be installed on your system 👉🏼 [Python download link](https://www.python.org/downloads/).
 
-2 .  Install **OpenPose** and its dependencies 👉🏼 [prerequisites](https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/prerequisites.md) and [installation guide](https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/installation.md#installation)
+**b)** Install **OpenPose** and its dependencies 👉🏼 [prerequisites](https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/prerequisites.md) and [installation guide](https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/installation.md#installation)
 
-3 . Make sure to export **pyOpenPose** 👉🏼[API doc](https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/modules/python_module.md)
+**c)** Make sure to export **pyOpenPose** 👉🏼[API doc](https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/modules/python_module.md)
 
 ### Installation
 
-1 . Clone GraphPipe from github:
+**1.** Clone GraphPipe from github:
 ```sh
 git clone https://github.com/gabecarra/GraphPipe.git
 cd GraphPipe
 ```
-2 . Install NPM packages
+**2.** Install package dependencies
 ```sh
-
+python setup.py install
 ```
 
+**3.** Make sure that pyOpenPose works:
+```sh
+python
+import openpose
+```
 
-
+**4.** Done! 🎉🥳
 <!-- USAGE EXAMPLES -->
 ## Usage
 
@@ -103,18 +108,18 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
-Logo made by [Becris](https://www.flaticon.com/authors/becris) from www.flaticon.com
+Logo icons made by [Becris](https://www.flaticon.com/authors/becris) and [itim2101](https://www.flaticon.com/authors/itim2101) from www.flaticon.com
 
 <!-- CONTACT -->
 ## Contact
 
 Gabriel Henrique Carraretto - carrag@usi.ch
 
-Project Link: [https://github.com/gabecarra/Bachelor-Project](https://github.com/gabecarra/Bachelor-Project)
+Project Link: [https://github.com/gabecarra/GraphPipe](https://github.com/gabecarra/GraphPipe)
 
 [contributors-shield]: https://img.shields.io/badge/contributors-1-brightgreen?style=flat-square
-[contributors-url]: https://github.com/gabecarra/Bachelor-Project/graphs/contributors
+[contributors-url]: https://github.com/gabecarra/GraphPipe/graphs/contributors
 [license-shield]: https://img.shields.io/badge/license-MIT-blue?style=flat-square
-[license-url]: https://github.com/gabecarra/Bachelor-Project/blob/master/LICENSE
+[license-url]: https://github.com/gabecarra/GraphPipe/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 <!-- [linkedin-url]:  -->
