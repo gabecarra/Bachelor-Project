@@ -1,4 +1,3 @@
-import importlib
 import os
 import sys
 import time
@@ -479,8 +478,6 @@ def run(args: list):
             __process_stream(op_wrapper, default_args, node_type)
         except IndexError:
             print(usage_err)
-    importlib.reload(op)
-
 
 if __name__ == '__main__':
     sys_args = sys.argv[1:]
