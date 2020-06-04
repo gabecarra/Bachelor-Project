@@ -1,9 +1,9 @@
-from setuptools import setup
+import setuptools
 
-setup(
+setuptools.setup(
     name='GraphPipe',
     version='1.0',
-    packages=[''],
+    packages=setuptools.find_packages(),
     url='https://github.com/gabecarra/GraphPipe',
     license='MIT',
     author='Gabriel Henrique Carraretto',
