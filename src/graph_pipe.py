@@ -432,7 +432,7 @@ def __process_stream(openpose, args, node_type: dict):
     cv2.destroyAllWindows()
 
 
-def parse_data(args: list):
+def run(args: list):
     """
     Parses the data passed as argument, and, depending on the arguments,
     applies OpenPose recognition to hands, face and body, and returns a
@@ -491,4 +491,4 @@ if __name__ == '__main__':
                 parsed_args.append(sys_args[i] + ' ' + sys_args[i + 1])
             else:
                 parsed_args.append(sys_args[i])
-    parse_data(parsed_args)
+    run(parsed_args)
