@@ -45,7 +45,7 @@ ___
 ## About The Project
 
 <p align="center">
-    <img src="images/pipeline-graph.png" alt="Logo">
+    <img src="images/pipeline-graph.png" alt="Logo" width="600">
 </p>
 
 The following project consists in a python package that applies 2D multi-person pose estimation to images and videos, and parses the results into attributed graphs. The goal of this project is to make available an all-in-one tool to build datasets based on real time 2D multi-person detection, and is part of my bachelor project at [USI](https://www.usi.ch/en).
