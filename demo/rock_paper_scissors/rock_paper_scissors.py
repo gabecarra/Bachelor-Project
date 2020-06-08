@@ -1,8 +1,5 @@
-from utils.networkx_converter import get_nx_graphs
 import glob
-import ujson
 import matplotlib.pyplot as plt
-from statistics import mean
 import numpy as np
 from sklearn.model_selection import train_test_split
 from spektral.layers import GraphConv, GlobalMaxPool
@@ -12,21 +9,7 @@ from tensorflow.keras.layers import Input, Dense, Dropout
 from tensorflow.keras.models import Model
 from tensorflow.keras.optimizers import Adam
 from utils.networkx_converter import get_nx_graphs
-
-
-def get_best_results(data: dict) -> list:
-    """
-    Given openpose data, checks which hand has the best accuracy between
-    left and right hand
-    :param dict data:  dictionary of openpose generated data
-    :return: list with 'handr' or 'handl'
-    """
-    person = data['people'][0]
-    handl_acc = [elem['confidence'] for elem in person['nodes']['hands']['left']]
-    handr_acc = [elem['confidence'] for elem in person['nodes']['hands']['right']]
-    if mean(handl_acc) >= mean(handr_acc):
-        return ['handl']
-    return ['handr']
+import json
 
 
 def __get_graph_list(shape):
@@ -38,16 +21,15 @@ def __get_graph_list(shape):
     :return list: list of networkx graphs
     """
     graph_list = []
-    files = glob.glob('../../data/Rock Paper Scissors/' + shape + '/*.json')
+    files = glob.glob('../../' + shape + '/*.json')
     for file in files:
         with open(file) as json_file:
-            data = ujson.load(json_file)
-            orientation = get_best_results(data)
-            graph_list.extend(
-                get_nx_graphs(file,
-                              orientation,
-                              normalize=True)
-            )
+            data = json.load(json_file)
+        graph_list.extend(
+            get_nx_graphs(data,
+                          dict(pose=False, hand=True, face=False),
+                          normalize=True)
+        )
     return graph_list
 
 

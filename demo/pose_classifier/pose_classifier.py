@@ -11,11 +11,11 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from spektral.layers import GraphConv, GlobalMaxPool
 from spektral.utils import conversion
-from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.keras.layers import Input, Dense, Dropout
 from tensorflow.keras.models import Model
 from tensorflow.keras.optimizers import Adam
-
+import json
+from tensorflow.keras.callbacks import EarlyStopping
 from utils.category_filter import parse_category
 from utils.networkx_converter import get_nx_graphs
 
@@ -29,9 +29,12 @@ def __get_graph_list(files: list):
     """
     graph_list = []
     for file in files:
+        with open("../../dataset_info/out/" + file) as json_file:
+            data = json.load(json_file)
+            data['resolution'] = list(map(int, data['resolution'].split('x')))
         graph_list.extend(
-            get_nx_graphs("../../data/MPII Human Pose Dataset/" + file,
-                          ['pose'],
+            get_nx_graphs(data,
+                          dict(pose=True, hand=False, face=False),
                           normalize=True)
         )
     return graph_list
@@ -192,3 +195,5 @@ if __name__ == "__main__":
           .format(eval_results[0], eval_results[1] * 100))
 
     __plot_results(history)
+
+
