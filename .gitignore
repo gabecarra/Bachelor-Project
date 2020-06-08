@@ -147,3 +147,4 @@ out_img/
 out_img/*
 /out_img/
 /out_img/*
+run_test.sh
