@@ -5,7 +5,7 @@ Contains all the OpenPose edge references for face, hands and pose
 """
 
 
-def get_edges(node_type: str) -> list:
+def get_edges(node_type):
     """
     Given a node type (pose, face, hand), returns the given edge set
     :param str node_type: the type of nodes needed
