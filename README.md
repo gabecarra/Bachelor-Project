@@ -17,7 +17,7 @@
       <br />
       <a href="https://github.com/gabecarra/GraphPipe/tree/master/demo">View Demo </a>
       ·
-      <a href="https://github.com/github_username/repo/issues">Project Report</a>
+      <a href="https://github.com/gabecarra/GraphPipe/blob/master/docs/bachelorproject.pdf">Project Report</a>
      <p>
 </p>
 
